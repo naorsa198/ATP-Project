@@ -22,61 +22,15 @@ public class SimpleMazeGenerator extends AMazeGenerator {
         }
     }
 
-    private Position createRandomPosition() {
-        Position pos = new Position(0, 0);
-        int rowS;
-        int colS;
-        rowS = maze.getMazeRows();
-        colS = maze.getMazeCols();
-        int colPos;
-        double zeroOrlast;
-        int rowPos = ThreadLocalRandom.current().nextInt(0, rowS);
-        if (rowPos != 0 && rowPos != maze.getMazeRows() - 1) {
-            zeroOrlast = Math.random();
-            if (zeroOrlast < 0.5)
-                colPos = 0;
-            else
-                colPos = maze.getMazeCols() - 1;
-            pos.setCol(colPos);
-            pos.setRow(rowPos);
-            return pos;
-        }
-
-        if (rowPos == 0 || rowPos == maze.getMazeRows() - 1) {
-            colPos = ThreadLocalRandom.current().nextInt(0, maze.getMazeCols());
-            pos.setRow(rowPos);
-            pos.setCol(colPos);
-            return pos;
-        }
-        return pos;
-    }
-
-    private boolean CheckSamePos(Position x, Position y) {
-        if (x.getColumnIndex() == y.getColumnIndex() && x.getRowIndex() == y.getRowIndex())
-            return true;
-        if(x.getColumnIndex()==y.getColumnIndex() || x.getRowIndex()== y.getRowIndex())
-            return true;
-        return false;
-    }
+    /**
+     * @return return Position that represent Index of row and col
+     */
 
 
-    private void createStartEnd() {
-        Position endPos;
-        Position startPos;
-        endPos = createRandomPosition();
-        startPos = createRandomPosition();
-        while (CheckSamePos(endPos, startPos)) {
-            endPos = createRandomPosition();
-            startPos = createRandomPosition();
-        }
-        maze.setStartRow(startPos.getRowIndex());
-        maze.setStartCol(startPos.getColumnIndex());
-        maze.setEndRow(endPos.getRowIndex());
-        maze.setEndCol(endPos.getColumnIndex());
 
-    }
-
-
+    /**
+     * create a way from the start to the end and fill it by 0-zero
+     */
     private void generateWay() {
 
         int row = maze.getStartRow();
@@ -107,8 +61,14 @@ public class SimpleMazeGenerator extends AMazeGenerator {
         }
     }
 
+    /**
+     * @param row -number of rows
+     * @param col-number of columns
+     * @return return SimpleMaze
+     */
     @Override
     public Maze generate(int row, int col) {
+
         maze = new Maze(row, col);
         // create maze full of 0 or 1
         fillMaze();
