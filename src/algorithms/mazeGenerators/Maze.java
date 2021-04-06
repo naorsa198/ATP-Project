@@ -104,8 +104,6 @@ public class Maze {
     }
 
     public void setCell(int row, int col, int val) {
-        if (row < 2 || col < 2 || row > getMazeRows() || col > getMazeCols())
-            return;
         maze[row][col] = val;
     }
 
