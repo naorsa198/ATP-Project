@@ -3,12 +3,10 @@ package algorithms.mazeGenerators;
 public class Position {
     private int row;
     private int col;
-    boolean val;
 
     public Position(int row, int col) {
         this.row = row;
         this.col = col;
-        val=false;
     }
 
     public int getRowIndex() {
@@ -28,13 +26,7 @@ public class Position {
         this.col = col;
     }
 
-    public boolean isVal() {
-        return val;
-    }
 
-    public void setVal(boolean val) {
-        this.val = val;
-    }
 
     public String toString() {
         return "{" + row + ',' + col + '}';
