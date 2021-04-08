@@ -107,6 +107,10 @@ public class Maze {
         maze[row][col] = val;
     }
 
+    public int getVal(int row,int col){
+        return maze[row][col];
+    }
+
     public void Print() {
         if (maze == null || getMazeCols() == 0 || getMazeRows() == 0 || (getMazeRows() == 1 && getMazeCols() == 1)) {
             return;

@@ -3,12 +3,12 @@ import java.util.Comparator;
 
 public abstract class AState {
     protected static int totalStates = 0;
-    protected int cost=0;
+    protected int cost;
     protected AState came;
 
 
-    public AState(int cost) {
-        this.cost = cost;
+    public AState() {
+        this.cost = 0;
         totalStates++;
     }
 

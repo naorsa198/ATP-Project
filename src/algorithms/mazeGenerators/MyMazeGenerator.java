@@ -44,12 +44,12 @@ public class MyMazeGenerator extends  AMazeGenerator {
                 Position pos = new Position(x - 2, y);
                 this.neigbors.add(pos);
             }
-        if (y - 2 >= 0 && y - 2 < maze.getMazeRows() && x < maze.getMazeCols() && x >= 0)
+        if (y - 2 >= 0 && y - 2 < maze.getMazeCols() && x < maze.getMazeRows() && x >= 0)
             if (maze.maze[x][y - 2] == 1) {
                 Position pos = new Position(x, y - 2);
                 this.neigbors.add(pos);
             }
-        if (y + 2 < maze.getMazeRows() && y + 2 >= 0 && x < maze.getMazeCols() && x >= 0)
+        if (y + 2 < maze.getMazeCols() && y + 2 >= 0 && x < maze.getMazeRows() && x >= 0)
             if (maze.maze[x][y + 2] == 1) {
                 Position pos = new Position(x, y + 2);
                 this.neigbors.add(pos);
