@@ -45,6 +45,8 @@ public class Position {
         return row == position.row && col == position.col;
     }
 
+
+
     @Override
     public int hashCode() {
         return (row+col)%10;

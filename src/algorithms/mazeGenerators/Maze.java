@@ -37,7 +37,6 @@ public class Maze {
     public int getStartRow() {
         return startRow;
     }
-
     /**
      * @param startRow- set the start row
      */

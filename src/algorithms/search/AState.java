@@ -1,15 +1,14 @@
 package algorithms.search;
 import java.util.Comparator;
+import java.util.Objects;
 
 public abstract class AState {
-    protected static int totalStates = 0;
-    protected int cost;
-    protected AState came;
+    protected int cost=0;
+    protected boolean visited=false;
 
 
     public AState() {
         this.cost = 0;
-        totalStates++;
     }
 
 
@@ -28,17 +27,6 @@ public abstract class AState {
         this.cost = cost;
     }
 
-    public AState getCame() {
-        return came;
-    }
-
-    public void setCame(AState came) {
-        this.came = came;
-    }
-
-    public static int getTotalStates() {
-        return totalStates;
-    }
 
     /**
      * an comperator class to compare between two states by their costs
@@ -52,4 +40,5 @@ public abstract class AState {
             return 0; //equal
         }
     }
+
 }

@@ -1,29 +1,41 @@
 package algorithms.search;
 import java.util.ArrayList;
+import java.util.Objects;
+
 import algorithms.mazeGenerators.Position;
 
 public class MazeState extends AState {
 
-    private Position pos;
+    protected int row;
+    protected int col;
 
-    public MazeState(Position pos) {
+
+    public MazeState(int x,int y) {
+        super();
         this.cost=10;
-        this.pos = pos;
-
-
+        row=x;
+        col=y;
     }
 
+    public int getRow() {
+        return row;
+    }
 
-    public Position getPos(){
-        return this.pos;
+    public int getCol() {
+        return col;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        MazeState ms= (MazeState)obj;
-        if(ms.pos==this.pos)
-            return true;
-        else return false;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MazeState mazeState = (MazeState) o;
+        return row == mazeState.row && col == mazeState.col;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(row, col);
     }
 
     @Override
@@ -41,18 +53,4 @@ public class MazeState extends AState {
         super.setCost(cost);
     }
 
-    @Override
-    public AState getCame() {
-        return super.getCame();
-    }
-
-    @Override
-    public void setCame(AState came) {
-        super.setCame(came);
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
 }

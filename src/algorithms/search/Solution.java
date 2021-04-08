@@ -26,6 +26,13 @@ public class Solution {
     }
 
     /**
+     * remove the last node from the solution
+     */
+    public void removeState(){
+        this.pathSolution.remove(pathSolution.size()-1);
+    }
+
+    /**
      * @return How many states in the solution
      */
     public int Size(){

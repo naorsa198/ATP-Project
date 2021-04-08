@@ -22,4 +22,3 @@ public interface ISearchingAlgorithm {
     public int getNumberOfNodesEvaluated();
     }
 
-}

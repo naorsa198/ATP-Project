@@ -1,35 +1,51 @@
 package algorithms.search;
 
-import java.util.Stack;
+import algorithms.mazeGenerators.Position;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DepthFirstSearch extends ASearchingAlgorithm{
-    Stack<AState>stack;
+    ArrayList<AState>optional;
+    ISearchable dm;
 
 
     public DepthFirstSearch() {
         super();
         this.name = "Depth First Search";
-        this.stack=new Stack<AState>();
+
     }
 
 
     @Override
     public Solution solve(ISearchable maze) {
-            AState current = maze.getStartState();
-            stack.push(root);
-            while(! stack.isEmpty()) {
-                while(current.left != null) {
-                    current = current.left;
-                    stack.push(current);
-                }
-                current = stack.pop();
-                visit(current.value);
-                if(current.right != null) {
-                    current = current.right;
-                    stack.push(current);
-                }
+        dm=maze;
+        if(dm == null)
+            return null;
+        goal=dm.getGoalState();
+        start=dm.getStartState();
+        dfs(start);
+        return solution;
+    }
+
+
+    private  void dfs(AState s) {
+        if (s.equals(goal))
+            return;
+        else {
+            solution.addState(s);
+            dm.visited(s);
+            visitedNodes++;
+            optional = new ArrayList<AState>();
+            optional = dm.getAllPossibleStates(s);
+            for (int i = 0; i <= optional.size(); i++) {
+                AState curr = optional.get(i);
+                if ((dm.checkIfvisited(curr) == false))
+                    dfs(curr);
             }
+            solution.removeState();
         }
+    }
 
     @Override
     public String getName() {
