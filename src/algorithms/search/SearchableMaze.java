@@ -14,7 +14,7 @@ public class SearchableMaze implements ISearchable {
     public SearchableMaze(Maze maze) {
         this.maze = maze;
         this.start = new MazeState(maze.getStartRow(),maze.getStartCol());
-        this.goal = new MazeState(maze.getEndRow(), maze.getMazeCols());
+        this.goal = new MazeState(maze.getEndRow(), maze.getEndCol());
         mem = new boolean[maze.getMazeRows()][maze.getMazeCols()];
     }
 
@@ -47,7 +47,7 @@ public class SearchableMaze implements ISearchable {
      * @return all the next possible states
      */
     @Override
-    public ArrayList<AState> getAllPossibleStates(AState s) {
+    public ArrayList<AState> getAllSuccessors(AState s) {
         if (s instanceof MazeState) {
             MazeState ms = (MazeState) s;
             ArrayList<AState> possibole = new ArrayList<AState>();
@@ -111,6 +111,10 @@ public class SearchableMaze implements ISearchable {
             return legallCell(((MazeState) s).getRow(), ((MazeState) s).getCol());
         }
         return false;
+    }
+
+    public void clear(){
+        mem= new boolean[maze.getMazeRows()][maze.getMazeCols()];
     }
 
 }

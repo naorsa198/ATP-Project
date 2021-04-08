@@ -40,9 +40,8 @@ public class MazeState extends AState {
 
     @Override
     public String toString() {
-        return null;
+        return "{"+ row + "," + col + "}";
     }
-
     @Override
     public int getCost() {
         return getCost();

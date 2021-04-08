@@ -5,10 +5,12 @@ import java.util.Objects;
 public abstract class AState {
     protected int cost=0;
     protected boolean visited=false;
+    protected AState stateBefor;
 
 
     public AState() {
         this.cost = 0;
+        stateBefor=null;
     }
 
 
@@ -27,6 +29,13 @@ public abstract class AState {
         this.cost = cost;
     }
 
+    public AState getStateBefor() {
+        return stateBefor;
+    }
+
+    public void setStateBefor(AState stateBefor) {
+        this.stateBefor = stateBefor;
+    }
 
     /**
      * an comperator class to compare between two states by their costs
