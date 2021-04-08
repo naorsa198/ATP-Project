@@ -72,18 +72,25 @@ public class SearchableMaze implements ISearchable {
             if (legallCell(up, col) && legallCell(up, right)) {
                 MazeState state = new MazeState(up, right);
                 state.setCost(15);
+                possibole.add(state);
             }
             if (legallCell(down, col) && legallCell(down, right)) {
                 MazeState state = new MazeState(down, right);
                 state.setCost(15);
+                possibole.add(state);
+
             }
             if (legallCell(row, left) && legallCell(up, left)) {
                 MazeState state = new MazeState(up, left);
                 state.setCost(15);
+                possibole.add(state);
+
             }
             if (legallCell(row, right) && legallCell(down, right)) {
                 MazeState state = new MazeState(down, right);
                 state.setCost(15);
+                possibole.add(state);
+
             }
 
             return possibole;

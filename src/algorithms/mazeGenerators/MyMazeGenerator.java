@@ -85,6 +85,8 @@ public class MyMazeGenerator extends  AMazeGenerator {
         return array.get(rnd);
     }
 
+
+
     private void dfsGenerate() {
         Position current = new Position(maze.startRow, maze.startCol);
         Position choosen;
@@ -105,19 +107,35 @@ public class MyMazeGenerator extends  AMazeGenerator {
 
         }
     }
+        private void createEnd() {
+        int strow = maze.getStartRow();
+        int stcol= maze.getStartCol();
+        boolean flag = true;
+            while (flag = true) {
+                createStartEnd();
+                if (maze.maze[maze.getEndRow()][maze.getEndCol()]==1)
+                    continue;
+                if(maze.getEndRow()== maze.getStartRow() && maze.getEndCol()==maze.getStartCol())
+                    continue;
+                break;
+            }
+            maze.setStartRow(strow);
+            maze.setStartCol(stcol);
+        }
 
         @Override
         public Maze generate( int row , int col ) {
             maze = new Maze(row, col);
 
             fillMaze();
-
             createStartEnd();
 
             dfsGenerate();
 
+            createEnd();
 
             return this.maze;
         }
+
 
     }

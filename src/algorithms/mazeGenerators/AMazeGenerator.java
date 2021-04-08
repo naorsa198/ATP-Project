@@ -74,7 +74,7 @@ public abstract class AMazeGenerator implements IMazeGenerator{
      * @param y Position y- end indexes
      * @return false if the postion are completely differents
      */
-    private boolean CheckSamePos(Position x, Position y) {
+    public boolean CheckSamePos(Position x, Position y) {
         if (x.getColumnIndex() == y.getColumnIndex() && x.getRowIndex() == y.getRowIndex())
             return true;
         if(x.getColumnIndex()==y.getColumnIndex() || x.getRowIndex()== y.getRowIndex())
