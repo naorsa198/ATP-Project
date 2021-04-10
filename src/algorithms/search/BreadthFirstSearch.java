@@ -14,6 +14,10 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
         stack = new Stack<AState>();
     }
 
+    /**
+     * @param domain - the problem we need to solve
+     * @return  solution - path of postions from start to end
+     */
     @Override
     public Solution solve(ISearchable domain) {
         domain.clear();
@@ -61,6 +65,10 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
         return solution;
 
     }
+
+    /**
+     * @return the name of solver algo
+     */
     @Override
     public String getName() {
         return super.getName();
@@ -72,6 +80,9 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
     }
 
 
+    /**
+     * @param s set the cost of getting to this state
+     */
     protected void setCostNode(AState s){
         s.setCost(1);
     }

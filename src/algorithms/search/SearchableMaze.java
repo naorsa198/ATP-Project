@@ -1,6 +1,5 @@
 package algorithms.search;
 import algorithms.mazeGenerators.Maze;
-import algorithms.mazeGenerators.Position;
 
 import java.util.ArrayList;
 
@@ -18,13 +17,6 @@ public class SearchableMaze implements ISearchable {
         mem = new boolean[maze.getMazeRows()][maze.getMazeCols()];
     }
 
-    public MazeState getStartRow() {
-        return start;
-    }
-
-    public MazeState getGoal() {
-        return goal;
-    }
 
     @Override
     public AState getStartState() {
@@ -36,6 +28,11 @@ public class SearchableMaze implements ISearchable {
         return this.goal;
     }
 
+    /**
+     * @param x  index of row
+     * @param y index of col
+     * @return if this position is state that can be moved to here
+     */
     private boolean legallCell(int x, int y) {
         if (x >= maze.getMazeRows() || y >= maze.getMazeCols() || x < 0 || y < 0 || maze.getVal(x, y) != 0 )
             return false;
@@ -111,11 +108,18 @@ public class SearchableMaze implements ISearchable {
     }
 
 
+    /**
+     * @param state make the stated has visited
+     */
     public void visited(AState state) {
         MazeState s=(MazeState)state;
         this.mem[s.getRow()][s.getCol()] = true;
     }
 
+    /**
+     * @param state -check this state
+     * @return true if this state has visited by the solver algo
+     */
     public boolean checkIfvisited(AState state) {
         MazeState s=(MazeState)state;
         if(  this.mem[s.getRow()][s.getCol()])
@@ -123,15 +127,21 @@ public class SearchableMaze implements ISearchable {
         return false;
     }
 
+    /**
+     * @param s - state in the searchable problem
+     * @return     return if this state is state that can be moved to here
+     */
     @Override
     public boolean validState(AState s) {
         if (s instanceof MazeState) {
-            MazeState ms = (MazeState) s;
             return legallCell(((MazeState) s).getRow(), ((MazeState) s).getCol());
         }
         return false;
     }
 
+    /**
+     * clear the memorize
+     */
     public void clear(){
         mem= new boolean[maze.getMazeRows()][maze.getMazeCols()];
     }

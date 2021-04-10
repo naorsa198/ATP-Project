@@ -1,6 +1,5 @@
 package algorithms.search;
 
-import algorithms.mazeGenerators.Position;
 import java.util.Stack;
 import java.util.ArrayList;
 
@@ -40,8 +39,10 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
     }
 
 
-
-
+    /**
+     * @param curr - state In the our Searchable problem
+     * iterative DFS func to find the solution path
+     */
     private void dfsIt(AState curr){
 
         while(!(flag)){
@@ -72,11 +73,17 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
         }
     }
 
+    /**
+     * @return return the name of the solver algo
+     */
     @Override
     public String getName() {
         return super.getName();
     }
 
+    /**
+     * @return how many nodes evaluated
+     */
     @Override
     public int getNumberOfNodesEvaluated() {
         return super.getNumberOfNodesEvaluated();

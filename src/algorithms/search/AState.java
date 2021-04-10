@@ -1,10 +1,8 @@
 package algorithms.search;
 import java.util.Comparator;
-import java.util.Objects;
 
 public abstract class AState {
-    protected int cost=0;
-    protected boolean visited=false;
+    protected int cost;
     protected AState stateBefor;
 
 
@@ -21,10 +19,16 @@ public abstract class AState {
     public abstract boolean equals(Object obj);
     public abstract String toString();
 
+    /**
+     * @return  the cost of getting to this state
+     */
     public int getCost() {
         return cost;
     }
 
+    /**
+     * @param  cost value of getting to this state
+     */
     public void setCost(int cost) {
         this.cost = cost;
     }

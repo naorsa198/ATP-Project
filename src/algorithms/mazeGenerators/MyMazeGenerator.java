@@ -33,6 +33,11 @@ public class MyMazeGenerator extends  AMazeGenerator {
     }
 
 
+    /**
+     * @param x position in maze from x-numboer of row
+     * @param y position in maze from x-numboer of col
+     *  add to neighbor all the posibole next postion
+     */
     private void GetAvailableneighbors(int x, int y) {
         if (x + 2 < maze.getMazeRows() && x + 2 >= 0 && y < maze.getMazeCols() && y >= 0)
             if (maze.maze[x + 2][y] == 1) {
@@ -57,6 +62,11 @@ public class MyMazeGenerator extends  AMazeGenerator {
 
     }
 
+    /**
+     * @param src source postion
+     * @param target next postion
+     *               the func break the wall btw the two postions
+     */
     private void breakWalls(Position src, Position target) {
         if (src.getRowIndex() == target.getRowIndex())
             if (src.getColumnIndex() > target.getColumnIndex()) {
@@ -80,13 +90,19 @@ public class MyMazeGenerator extends  AMazeGenerator {
             }
     }
 
+    /**
+     * @param array give arrandom postion from the array
+     * @return
+     */
     public static Position getRandom(ArrayList<Position> array) {
         int rnd = new Random().nextInt(array.size());
         return array.get(rnd);
     }
 
 
-
+    /**
+     * genreate the maze by the DFS algo
+     */
     private void dfsGenerate() {
         Position current = new Position(maze.startRow, maze.startCol);
         Position choosen;
@@ -107,6 +123,10 @@ public class MyMazeGenerator extends  AMazeGenerator {
 
         }
     }
+
+    /**
+     * create goal postion to the maze
+     */
         private void createEnd() {
         int strow = maze.getStartRow();
         int stcol= maze.getStartCol();
@@ -124,6 +144,11 @@ public class MyMazeGenerator extends  AMazeGenerator {
             maze.setStartCol(stcol);
         }
 
+    /**
+     * @param row number or row
+     * @param col number of cols
+     * @return genrerate the maze
+     */
         @Override
         public Maze generate( int row , int col ) {
             if(!(legalSize(row,col)))

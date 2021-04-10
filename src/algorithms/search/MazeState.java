@@ -1,8 +1,5 @@
 package algorithms.search;
-import java.util.ArrayList;
 import java.util.Objects;
-
-import algorithms.mazeGenerators.Position;
 
 public class MazeState extends AState {
 
@@ -25,6 +22,10 @@ public class MazeState extends AState {
         return col;
     }
 
+    /**
+     * @param o object as MazeState
+     * @return return true if the two MazeState is equal
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -42,11 +43,18 @@ public class MazeState extends AState {
     public String toString() {
         return "{"+ row + "," + col + "}";
     }
+
+    /**
+     * @return return the cost of getting to this state
+     */
     @Override
     public int getCost() {
         return cost;
     }
 
+    /**
+     * @param  cost the value of getting to this state
+     */
     @Override
     public void setCost(int cost) {
         super.setCost(cost);
