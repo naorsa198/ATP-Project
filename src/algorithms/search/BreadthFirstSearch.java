@@ -1,14 +1,17 @@
 package algorithms.search;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
+import java.util.Stack;
 
 public class BreadthFirstSearch extends ASearchingAlgorithm{
     PriorityQueue<AState>nodes;
+    Stack<AState> stack;
 
     public BreadthFirstSearch() {
         super();
         nodes =new PriorityQueue<AState>(1000,new AState.AStateComparator());
         name="Breadth First Search";
+        stack = new Stack<AState>();
     }
 
     @Override
@@ -19,6 +22,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
         setCostNode(start);
         setCostNode(goal);
         nodes.add(start);
+        boolean flag=false;
         ArrayList<AState> possibole;
         AState curr=null;
         while (!nodes.isEmpty()) {
@@ -28,6 +32,16 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
             possibole = domain.getAllSuccessors(curr);
             domain.visited(curr);
             visitedNodes++;
+            for (int j = 0; j < possibole.size(); j++) {
+                if(possibole.get(j).equals(goal)) {
+                    possibole.get(j).setStateBefor(curr);
+                    curr= possibole.get(j);
+                    flag=true;
+                    break;
+                }
+            }
+            if(flag==true)
+                break;
             for (int i = 0; i < possibole.size(); i++) {
                 if (!(domain.checkIfvisited(possibole.get(i)))) {
                     possibole.get(i).setStateBefor(curr);
@@ -37,10 +51,15 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
             }
         }
         while(curr!=null){
-            solution.addState(curr);
-            curr=curr.getStateBefor();
+            stack.push(curr);
+            curr=curr.stateBefor;
+        }
+        while(!(stack.isEmpty())) {
+            solution.addState(stack.pop());
+
         }
         return solution;
+
     }
     @Override
     public String getName() {

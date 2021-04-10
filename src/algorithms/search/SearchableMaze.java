@@ -139,5 +139,10 @@ public class SearchableMaze implements ISearchable {
     public int cellVal(int row , int col){
         return maze.getVal(row,col);
     }
+    public void setllVal(int row , int col){
+        maze.setCell(row,col,3);
+    }
+
+
 
 }
