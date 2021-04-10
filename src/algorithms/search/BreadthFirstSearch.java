@@ -10,7 +10,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
     public BreadthFirstSearch() {
         super();
         nodes =new PriorityQueue<AState>(1000,new AState.AStateComparator());
-        name="Breadth First Search";
+        name="BreadthFirstSearch";
         stack = new Stack<AState>();
     }
 

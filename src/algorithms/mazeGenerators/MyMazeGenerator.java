@@ -36,7 +36,7 @@ public class MyMazeGenerator extends  AMazeGenerator {
     /**
      * @param x position in maze from x-numboer of row
      * @param y position in maze from x-numboer of col
-     *  add to neighbor all the posibole next postion
+     *  add to neighbor all the posibole next postion for the DFS maze genratore
      */
     private void GetAvailableneighbors(int x, int y) {
         if (x + 2 < maze.getMazeRows() && x + 2 >= 0 && y < maze.getMazeCols() && y >= 0)
