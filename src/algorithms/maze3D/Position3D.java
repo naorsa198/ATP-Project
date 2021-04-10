@@ -17,6 +17,17 @@ public class Position3D {
     public int getRowIndex(){return  row;}
     public int getColumnIndex(){return col;}
 
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public void setCol(int col) {
+        this.col = col;
+    }
+
+    public void setDp(int dp) {
+        this.dp = dp;
+    }
 
     @Override
     public boolean equals(Object o) {

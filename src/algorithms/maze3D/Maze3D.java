@@ -12,9 +12,10 @@ public class Maze3D {
     protected int depthEnd;
 
     public Maze3D(int[][][] maze, int depth, int row , int col ) {
-        maze = new int[depth][row][col];}
+        maze = new int[depth][row][col];
+    }
 
-    public int[][][] getMap(){
+        public int[][][] getMap(){
         return maze;
         }
 
@@ -30,6 +31,19 @@ public class Maze3D {
         Position3D goalPositon = new Position3D(depthEnd,endRow, endCol);
         return goalPositon;
     }
+
+    public int getMazeDepth(){
+        return maze.length;
+    }
+
+    public int getMazeRow(){
+        return maze[0].length;
+    }
+
+    public int getMazeCol(){
+        return maze[0][0].length;
+    }
+
 
 }
 

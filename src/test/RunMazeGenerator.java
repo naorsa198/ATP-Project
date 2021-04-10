@@ -3,6 +3,12 @@ package test;
 import algorithms.mazeGenerators.*;
 public class RunMazeGenerator {
     public static void main(String[] args) {
+        int maz[][][]=new int[3][5][6];
+        System.out.println(maz.length);
+        System.out.println(maz[1].length);
+        System.out.println(maz[0][0].length);
+
+
      //   testMazeGenerator(new EmptyMazeGenerator());
        // testMazeGenerator(new SimpleMazeGenerator());
         testMazeGenerator(new MyMazeGenerator());
