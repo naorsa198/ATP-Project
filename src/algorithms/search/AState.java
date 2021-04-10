@@ -40,7 +40,7 @@ public abstract class AState {
     /**
      * an comperator class to compare between two states by their costs
      */
-    class AStateComparator implements Comparator<AState> {
+    static class AStateComparator implements Comparator<AState> {
         public int compare(AState s1, AState s2) {
             if (s1.cost < s2.cost)
                 return 1;

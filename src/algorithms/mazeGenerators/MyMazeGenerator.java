@@ -113,8 +113,9 @@ public class MyMazeGenerator extends  AMazeGenerator {
         boolean flag = true;
             while (flag = true) {
                 createStartEnd();
+                if(maze.getMazeRows()>2 && maze.getMazeCols()>2){
                 if (maze.maze[maze.getEndRow()][maze.getEndCol()]==1)
-                    continue;
+                    continue;}
                 if(maze.getEndRow()== strow && maze.getEndCol()==stcol)
                     continue;
                 break;

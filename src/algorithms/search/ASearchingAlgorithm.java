@@ -16,10 +16,12 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
         this.solution= new Solution();
     }
 
+
     @Override
     public Solution solve(ISearchable domain) {
         return null;
     }
+
 
     @Override
     public String getName() {

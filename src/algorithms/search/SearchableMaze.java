@@ -57,15 +57,27 @@ public class SearchableMaze implements ISearchable {
             int down = row + 1;
             int left = col - 1;
             int right = col + 1;
-            if (legallCell(up, col))
-                possibole.add(new MazeState(up,col));
-            if (legallCell(down, col))
-                possibole.add(new MazeState(down, col));
-            if (legallCell(row, left))
-                possibole.add(new MazeState(row, left));
-            if (legallCell(row, right))
-                possibole.add(new MazeState(row, right));
+            if (legallCell(up, col)) {
+                MazeState state = new MazeState(up, col);
+                state.setCost(10);
+                possibole.add(state);
+            }
+            if (legallCell(down, col)) {
+                MazeState state = new MazeState(down, col);
+                state.setCost(10);
+                possibole.add(state);
+            }
+            if (legallCell(row, left)){
+                MazeState state = new MazeState(row, left);
+                state.setCost(10);
+                possibole.add(state);
+        }
 
+            if (legallCell(row, right)) {
+                MazeState state = new MazeState(row, right);
+                state.setCost(10);
+                possibole.add(state);
+            }
 
             // checking the alchson
 
@@ -122,6 +134,10 @@ public class SearchableMaze implements ISearchable {
 
     public void clear(){
         mem= new boolean[maze.getMazeRows()][maze.getMazeCols()];
+    }
+
+    public int cellVal(int row , int col){
+        return maze.getVal(row,col);
     }
 
 }

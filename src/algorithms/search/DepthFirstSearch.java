@@ -9,6 +9,9 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
     Stack<AState> stack;
     boolean flag;
 
+    /**
+     *
+     */
     public DepthFirstSearch() {
         super();
         this.name = "Depth First Search";
@@ -17,6 +20,11 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
     }
 
 
+    /**
+     * @param maze - Isearchable maze
+     *
+     * @return - solution - path of node from start node to goal node
+     */
     @Override
     public Solution solve(ISearchable maze) {
         dm = maze;
@@ -33,32 +41,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
     }
 
 
-    private void dfs(AState s) {
-        if (s.equals(goal)) {
-            goal.setStateBefor(s);
-            while (goal != null) {
-                goal=goal.stateBefor;
-                if (goal!=null)
-                    stack.push(goal);
-            }
-            flag=true;
-            return;
-        }
-        else{
-            if(flag==true) {
-                return;}
-                dm.visited(s);
-                ArrayList<AState> possibole;
-                possibole = dm.getAllSuccessors(s);
-                for (int i = 0; i < possibole.size(); i++) {
-                    if (!(dm.checkIfvisited(possibole.get(i)))) {
-                        possibole.get(i).setStateBefor(s);
-                        visitedNodes++;
-                        dfs(possibole.get(i));
-                    }
-                }
-        }
-    }
+
 
     private void dfsIt(AState curr){
 
@@ -86,8 +69,8 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
                 else counter++;
                 if(counter==possibole.size())
                     curr=curr.getStateBefor();
-                }
             }
+        }
     }
 
     @Override
@@ -100,3 +83,35 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
         return super.getNumberOfNodesEvaluated();
     }
 }
+
+
+
+
+ /*   private void dfs(AState s) {
+        if (s.equals(goal)) {
+            goal.setStateBefor(s);
+            while (goal != null) {
+                goal=goal.stateBefor;
+                if (goal!=null)
+                    stack.push(goal);
+            }
+            flag=true;
+            return;
+        }
+        else{
+            if(flag==true) {
+                return;}
+                dm.visited(s);
+                ArrayList<AState> possibole;
+                possibole = dm.getAllSuccessors(s);
+                for (int i = 0; i < possibole.size(); i++) {
+                    if (!(dm.checkIfvisited(possibole.get(i)))) {
+                        possibole.get(i).setStateBefor(s);
+                        visitedNodes++;
+                        dfs(possibole.get(i));
+                    }
+                }
+        }
+    }
+*/
+

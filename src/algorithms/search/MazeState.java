@@ -44,7 +44,7 @@ public class MazeState extends AState {
     }
     @Override
     public int getCost() {
-        return getCost();
+        return cost;
     }
 
     @Override
