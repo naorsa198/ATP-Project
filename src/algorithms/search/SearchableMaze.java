@@ -37,7 +37,7 @@ public class SearchableMaze implements ISearchable {
     }
 
     private boolean legallCell(int x, int y) {
-        if (x >= maze.getMazeRows() || y >= maze.getMazeCols() || x < 0 || y < 0 || maze.getVal(x, y) != 0)
+        if (x >= maze.getMazeRows() || y >= maze.getMazeCols() || x < 0 || y < 0 || maze.getVal(x, y) != 0 )
             return false;
         return true;
     }
@@ -69,24 +69,24 @@ public class SearchableMaze implements ISearchable {
 
             // checking the alchson
 
-            if (legallCell(up, col) && legallCell(up, right)) {
+            if (legallCell(up, col) && legallCell(up, right) && maze.getVal(up, col) != 'E')  {
                 MazeState state = new MazeState(up, right);
                 state.setCost(15);
                 possibole.add(state);
             }
-            if (legallCell(down, col) && legallCell(down, right)) {
+            if (legallCell(down, col) && legallCell(down, right) && maze.getVal(down, col) != 'E' ) {
                 MazeState state = new MazeState(down, right);
                 state.setCost(15);
                 possibole.add(state);
 
             }
-            if (legallCell(row, left) && legallCell(up, left)) {
+            if (legallCell(row, left) && legallCell(up, left) && maze.getVal(row, left) != 'E') {
                 MazeState state = new MazeState(up, left);
                 state.setCost(15);
                 possibole.add(state);
 
             }
-            if (legallCell(row, right) && legallCell(down, right)) {
+            if (legallCell(row, right) && legallCell(down, right)&& maze.getVal(row, right) != 'E') {
                 MazeState state = new MazeState(down, right);
                 state.setCost(15);
                 possibole.add(state);

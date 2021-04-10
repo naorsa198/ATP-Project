@@ -115,7 +115,7 @@ public class MyMazeGenerator extends  AMazeGenerator {
                 createStartEnd();
                 if (maze.maze[maze.getEndRow()][maze.getEndCol()]==1)
                     continue;
-                if(maze.getEndRow()== maze.getStartRow() && maze.getEndCol()==maze.getStartCol())
+                if(maze.getEndRow()== strow && maze.getEndCol()==stcol)
                     continue;
                 break;
             }

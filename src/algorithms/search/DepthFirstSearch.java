@@ -3,20 +3,17 @@ package algorithms.search;
 import algorithms.mazeGenerators.Position;
 import java.util.Stack;
 import java.util.ArrayList;
-import java.util.List;
 
 public class DepthFirstSearch extends ASearchingAlgorithm {
-    ArrayList<AState> optional;
     ISearchable dm;
     Stack<AState> stack;
-    boolean df;
-
+    boolean flag;
 
     public DepthFirstSearch() {
         super();
         this.name = "Depth First Search";
         stack = new Stack<AState>();
-        df=false;
+        flag=false;
     }
 
 
@@ -29,6 +26,9 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
         start = dm.getStartState();
         dm.clear();
         dfs(start);
+        while(stack.size()>0){
+            solution.addState(stack.pop());
+        }
         return solution;
     }
 
@@ -38,23 +38,25 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
             goal.setStateBefor(s);
             while (goal != null) {
                 goal=goal.stateBefor;
-                solution.addState(goal);
-
+                if (goal!=null)
+                    stack.push(goal);
             }
-            System.out.println("found sol");
+            flag=true;
             return;
         }
-        else{
-                dm.visited(s);
-                ArrayList<AState> possibole = dm.getAllSuccessors(s);
+        else {
+            dm.visited(s);
+            visitedNodes++;
+            ArrayList<AState> possibole = dm.getAllSuccessors(s);
+            if (flag == false) {
                 for (AState a : possibole) {
                     if (!(dm.checkIfvisited(a))) {
-                        visitedNodes++;
                         a.setStateBefor(s);
                         dfs(a);
                     }
                 }
             }
+        }
         }
     @Override
     public String getName() {

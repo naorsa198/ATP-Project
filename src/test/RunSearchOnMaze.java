@@ -13,8 +13,7 @@ import java.util.ArrayList;
 public class RunSearchOnMaze {
     public static void main(String[] args) {
         IMazeGenerator mg = new MyMazeGenerator();
-        Maze maze = mg.generate(4, 4);
-        maze.Print();
+        Maze maze = mg.generate(100, 100);
         SearchableMaze searchableMaze = new SearchableMaze(maze);
 
      //   solveProblem(searchableMaze, new BreadthFirstSearch());
