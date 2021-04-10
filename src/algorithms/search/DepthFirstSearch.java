@@ -13,7 +13,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
      */
     public DepthFirstSearch() {
         super();
-        this.name = "Depth First Search";
+        this.name = "DepthFirstSearch";
         stack = new Stack<AState>();
     }
 

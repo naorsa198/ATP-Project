@@ -110,6 +110,14 @@ public class Maze {
         return maze[row][col];
     }
 
+// in the test its print and in the pdf its Print;
+    public void print(){
+        Print();
+    }
+
+    /**
+     * print the maze
+     */
     public void Print() {
         if (maze == null || getMazeCols() == 0 || getMazeRows() == 0 || (getMazeRows() == 1 && getMazeCols() == 1)) {
             return;

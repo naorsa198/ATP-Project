@@ -3,7 +3,7 @@ package algorithms.search;
 public class BestFirstSearch extends BreadthFirstSearch {
     public BestFirstSearch() {
         super();
-        this.name = "Best First Search";
+        this.name = "BestFirstSearch";
     }
 
     /**
