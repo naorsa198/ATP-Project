@@ -25,7 +25,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
         goal = dm.getGoalState();
         start = dm.getStartState();
         dm.clear();
-        dfs(start);
+        dfsIt(start);
         while(stack.size()>0){
             solution.addState(stack.pop());
         }
@@ -44,20 +44,52 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
             flag=true;
             return;
         }
-        else {
-            dm.visited(s);
-            visitedNodes++;
-            ArrayList<AState> possibole = dm.getAllSuccessors(s);
-            if (flag == false) {
-                for (AState a : possibole) {
-                    if (!(dm.checkIfvisited(a))) {
-                        a.setStateBefor(s);
-                        dfs(a);
+        else{
+            if(flag==true) {
+                return;}
+                dm.visited(s);
+                ArrayList<AState> possibole;
+                possibole = dm.getAllSuccessors(s);
+                for (int i = 0; i < possibole.size(); i++) {
+                    if (!(dm.checkIfvisited(possibole.get(i)))) {
+                        possibole.get(i).setStateBefor(s);
+                        visitedNodes++;
+                        dfs(possibole.get(i));
                     }
                 }
+        }
+    }
+
+    private void dfsIt(AState curr){
+
+        while(!(flag)){
+            if(curr.equals(goal)) {
+                goal.setStateBefor(curr);
+                while (goal != null) {
+                    goal=goal.stateBefor;
+                    if (goal!=null)
+                        stack.push(goal);
+                }
+                return;
             }
-        }
-        }
+            dm.visited(curr);
+            int counter=0;
+            ArrayList<AState> possibole;
+            possibole = dm.getAllSuccessors(curr);
+            for (int i = 0; i < possibole.size(); i++) {
+                if (!(dm.checkIfvisited(possibole.get(i)))) {
+                    possibole.get(i).setStateBefor(curr);
+                    curr=possibole.get(i);
+                    visitedNodes++;
+                    break;
+                }
+                else counter++;
+                if(counter==possibole.size())
+                    curr=curr.getStateBefor();
+                }
+            }
+    }
+
     @Override
     public String getName() {
         return super.getName();

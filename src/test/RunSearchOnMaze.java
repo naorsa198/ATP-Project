@@ -13,9 +13,9 @@ import java.util.ArrayList;
 public class RunSearchOnMaze {
     public static void main(String[] args) {
         IMazeGenerator mg = new MyMazeGenerator();
-        Maze maze = mg.generate(100, 100);
+        Maze maze = mg.generate(1000, 1000);
         SearchableMaze searchableMaze = new SearchableMaze(maze);
-
+     //   maze.Print();
      //   solveProblem(searchableMaze, new BreadthFirstSearch());
         solveProblem(searchableMaze, new DepthFirstSearch());
       //  solveProblem(searchableMaze, new BestFirstSearch());
