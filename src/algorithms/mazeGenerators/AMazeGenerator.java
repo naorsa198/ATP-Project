@@ -15,10 +15,11 @@ public abstract class AMazeGenerator implements IMazeGenerator{
         long start = System.currentTimeMillis();
         if (!legalSize(row, col)) {
             //on unlegal cases we will create 10x10 maze as default
-            row = 10;
-            col = 10;
+            return 0;
         }
         maze = generate(row,col);
+        if(maze==null)
+            return 0;
         long end = System.currentTimeMillis();
         return end-start;
     }
@@ -29,7 +30,7 @@ public abstract class AMazeGenerator implements IMazeGenerator{
      * @return true if legal
      */
     protected boolean legalSize(int row, int col) {
-        if (row == 1 && col == 1) {
+        if (row < 2 && col < 2) {
             return false;
         }
         if (row == 0 || col == 0) {

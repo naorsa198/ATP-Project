@@ -126,6 +126,8 @@ public class MyMazeGenerator extends  AMazeGenerator {
 
         @Override
         public Maze generate( int row , int col ) {
+            if(!(legalSize(row,col)))
+                return null;
             maze = new Maze(row, col);
 
             fillMaze();

@@ -1,4 +1,7 @@
 package algorithms.mazeGenerators;
+import algorithms.search.AState;
+
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class SimpleMazeGenerator extends AMazeGenerator {
@@ -36,29 +39,24 @@ public class SimpleMazeGenerator extends AMazeGenerator {
         int row = maze.getStartRow();
         int col = maze.getStartCol();
         maze.setCell(row, col, 0);
-
-        while (maze.maze[maze.getEndRow()][maze.getEndCol()] != 0) {
-
-
-            double randomRowOrCol = Math.random();
-            if (randomRowOrCol > 0.5 && row != maze.getEndRow()) { //row
-                if (row < maze.getEndRow())
-                    row++;
-                else
-                    row--;
+        while (maze.getEndRow()!=row) {
+            if (maze.getEndRow() > row) {
+                row++;
                 maze.setCell(row, col, 0);
-                continue;
-            }
-            if (col != maze.getEndCol()) { //col
-                if (col < maze.getEndCol())
-                    col++;
-                else
-                    col--;
+            } else {
+                row--;
                 maze.setCell(row, col, 0);
-                continue;
             }
-
         }
+        while (maze.getEndCol()!=col) {
+            if (maze.getEndCol() > col) {
+                col++;
+                maze.setCell(row, col, 0);
+            } else {
+                col--;
+                maze.setCell(row, col, 0);
+            }
+            }
     }
 
     /**
@@ -71,6 +69,8 @@ public class SimpleMazeGenerator extends AMazeGenerator {
 
         maze = new Maze(row, col);
         // create maze full of 0 or 1
+        if(!(legalSize(row,col)))
+            return null;
         fillMaze();
         //set start and end position of maze
         createStartEnd();

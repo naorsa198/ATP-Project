@@ -16,7 +16,6 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
         super();
         this.name = "Depth First Search";
         stack = new Stack<AState>();
-        flag=false;
     }
 
 

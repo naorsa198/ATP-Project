@@ -20,6 +20,8 @@ public class EmptyMazeGenerator extends  AMazeGenerator{
 
     @Override
     public Maze generate(int row, int col) {
+        if(!(legalSize(row,col)))
+            return null;
          Maze maze=new Maze(row,col);
          maze.setStartRow(0);
          maze.setStartCol(0);
