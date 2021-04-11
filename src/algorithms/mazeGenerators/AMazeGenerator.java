@@ -41,7 +41,7 @@ public abstract class AMazeGenerator implements IMazeGenerator{
         }
         return true;
     }
-    private Position createRandomPosition() {
+    protected Position createRandomPosition() {
         Position pos = new Position(0, 0);
         int rowS;
         int colS;
@@ -75,7 +75,7 @@ public abstract class AMazeGenerator implements IMazeGenerator{
      * @param y Position y- end indexes
      * @return false if the postion are completely differents
      */
-    public boolean CheckSamePos(Position x, Position y) {
+    protected boolean CheckSamePos(Position x, Position y) {
         if (x.getColumnIndex() == y.getColumnIndex() && x.getRowIndex() == y.getRowIndex())
             return true;
         if(x.getColumnIndex()==y.getColumnIndex() || x.getRowIndex()== y.getRowIndex())
