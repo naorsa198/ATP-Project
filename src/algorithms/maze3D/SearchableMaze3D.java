@@ -1,9 +1,7 @@
 package algorithms.maze3D;
 
-import algorithms.mazeGenerators.Maze;
 import algorithms.search.AState;
 import algorithms.search.ISearchable;
-import algorithms.search.MazeState;
 
 import java.util.ArrayList;
 
@@ -137,13 +135,15 @@ public class SearchableMaze3D implements ISearchable {
         mem= new boolean[maze.getMazeDepth()][maze.getMazeRow()][maze.getMazeCol()];
     }
 
-    public int cellVal(int dp,int row , int col){
+/*//functions for my testing
+    private int cellVal(int dp,int row , int col){
         return maze.getVal(dp,row,col);
     }
-    public void setllVal(int dp,int row , int col){
+    private void setllVal(int dp,int row , int col){
         maze.setCell(dp,row,col,3);
     }
 
+*/
 
 
 }

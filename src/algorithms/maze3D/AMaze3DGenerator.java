@@ -2,7 +2,7 @@ package algorithms.maze3D;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public abstract class AMaze3DGenerator implements IMazeGenerator3D {
+public abstract class AMaze3DGenerator implements IMaze3DGenerator {
     public Maze3D maze;
 
     @Override
@@ -14,8 +14,7 @@ public abstract class AMaze3DGenerator implements IMazeGenerator3D {
     public long measureAlgorithmTimeMillis(int depth, int row, int column) {
         long start = System.currentTimeMillis();
         //TODO CHANGE HEERE THE LEGEASIZE
-        if (!legalSize(depth, row, column)) {
-            //on unlegal cases we will create 10x10 maze as default
+        if (depth <2 || row <2 || column <2) {
             return 0;
         }
         maze = generate(depth, row, column);

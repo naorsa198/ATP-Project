@@ -1,6 +1,5 @@
 package algorithms.maze3D;
 
-import algorithms.mazeGenerators.Position;
 
 public class Maze3D {
     protected int[][][] map;

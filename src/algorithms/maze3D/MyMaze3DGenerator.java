@@ -1,12 +1,9 @@
 package algorithms.maze3D;
 
-import algorithms.mazeGenerators.Maze;
-import algorithms.mazeGenerators.Position;
 
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class MyMaze3DGenerator extends AMaze3DGenerator{
     public ArrayList<Position3D>neigbors;
@@ -35,13 +32,10 @@ public class MyMaze3DGenerator extends AMaze3DGenerator{
 
         return this.maze;
     }
-
+    /**
+     * creates maze with only walls (1)
+     */
     private void fillMaze() {
-
-        int rowS = maze.getMazeRow();
-        int colS = maze.getMazeCol();
-        int depth = maze.getMazeDepth();
-
 
         for (int i = 0; i < maze.getMazeRow(); i++) {
             for (int j = 0; j < maze.getMazeCol(); j++) {
@@ -51,7 +45,11 @@ public class MyMaze3DGenerator extends AMaze3DGenerator{
             }
         }
     }
-
+    /**
+     * @param x position in maze from x-numboer of row
+     * @param y position in maze from x-numboer of col
+     *  add to neighbor all the posibole next postion for the DFS maze genratore
+     */
 
     private void GetAvailableneighbors(int z, int x,int y) {
         if (legalSize(z, x + 2, y)) {
@@ -80,6 +78,11 @@ public class MyMaze3DGenerator extends AMaze3DGenerator{
         }
     }
 
+    /**
+     * @param src source postion
+     * @param target next postion
+     *               the func break the wall btw the two postions
+     */
     private void breakWalls(Position3D src, Position3D target) {
         // right col
         if (src.getRowIndex() == target.getRowIndex() && src.getDepthIndex()== target.getDepthIndex() )
@@ -117,7 +120,7 @@ public class MyMaze3DGenerator extends AMaze3DGenerator{
     /**
      * create start and end indexes from the position that made by the func createRandomPosition
      */
-    protected void createStartEnd() {
+    private void createStartEnd() {
         Position3D endPos;
         Position3D startPos;
         endPos = createRandomPosition();
@@ -160,7 +163,7 @@ public class MyMaze3DGenerator extends AMaze3DGenerator{
      * @param array give arrandom postion from the array
      * @return
      */
-    public static Position3D getRandom(ArrayList<Position3D> array) {
+    private static Position3D getRandom(ArrayList<Position3D> array) {
         int rnd = new Random().nextInt(array.size());
         return array.get(rnd);
     }

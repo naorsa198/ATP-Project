@@ -1,9 +1,7 @@
 package algorithms.maze3D;
 
 import algorithms.search.AState;
-import algorithms.search.MazeState;
 
-import java.util.Objects;
 
 
 public class Maze3DState extends AState {
@@ -21,6 +19,7 @@ public class Maze3DState extends AState {
         col = y;
         dp=d;
     }
+
 
     public int getRow() {
         return row;
