@@ -17,11 +17,11 @@ public class RunSearchOnMaze3D {
             maze.print();
             solveProblem(searchableMaze, new BreadthFirstSearch());
             maze.print();
-/*
+
             solveProblem(searchableMaze, new DepthFirstSearch());
 
             solveProblem(searchableMaze, new BestFirstSearch());
-*/
+
 
         }
 
@@ -35,7 +35,7 @@ public class RunSearchOnMaze3D {
         for(int i=0; i<solutionPath.size(); i++){
             if(((SearchableMaze3D)domain).cellVal(((Maze3DState)solutionPath.get(i)).getDp(),((Maze3DState)solutionPath.get(i)).getRow(),((Maze3DState)solutionPath.get(i)).getCol())==1)
                 System.out.println("***********problem**********");
-            ((SearchableMaze3D)domain).setllVal(((Maze3DState)solutionPath.get(i)).getDp(),((Maze3DState)solutionPath.get(i)).getRow(),((Maze3DState)solutionPath.get(i)).getCol());
+         //   ((SearchableMaze3D)domain).setllVal(((Maze3DState)solutionPath.get(i)).getDp(),((Maze3DState)solutionPath.get(i)).getRow(),((Maze3DState)solutionPath.get(i)).getCol());
         }
             System.out.println(solution.Size());
             ;

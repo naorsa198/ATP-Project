@@ -116,7 +116,7 @@ public class Maze3D {
                     if (depth == getStartPosition().getDepthIndex() && row == getStartRow() && col == getStartPosition().getColumnIndex()) // if the position is the start - mark with S
                         System.out.print("S ");
                     else {
-                        if (depth == depthEnd && row ==endRow && col == endRow) // if the position is the goal - mark with E
+                        if (depth == depthEnd && row ==endRow && col == endCol) // if the position is the goal - mark with E
                             System.out.print("E ");
                         else
                             System.out.print(map[depth][row][col] + " ");

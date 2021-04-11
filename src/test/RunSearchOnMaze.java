@@ -19,7 +19,7 @@ public class RunSearchOnMaze {
         SearchableMaze searchableMaze = new SearchableMaze(maze);
 
         solveProblem(searchableMaze, new BreadthFirstSearch());
-        solveProblem(searchableMaze, new DepthFirstSearch());
+    //    solveProblem(searchableMaze, new DepthFirstSearch());
 
         solveProblem(searchableMaze, new BestFirstSearch());
 
@@ -35,7 +35,7 @@ public class RunSearchOnMaze {
         for(int i=0; i<solutionPath.size(); i++){
             if(((SearchableMaze)domain).cellVal(((MazeState)solutionPath.get(i)).getRow(),((MazeState)solutionPath.get(i)).getCol())==1)
                 System.out.println("***********problem**********");
-            ((SearchableMaze)domain).setllVal(((MazeState)solutionPath.get(i)).getRow(),((MazeState)solutionPath.get(i)).getCol());
+     //       ((SearchableMaze)domain).setllVal(((MazeState)solutionPath.get(i)).getRow(),((MazeState)solutionPath.get(i)).getCol());
         }
         System.out.println(solution.Size());
        for (int i = 0; i < solutionPath.size(); i++) {
