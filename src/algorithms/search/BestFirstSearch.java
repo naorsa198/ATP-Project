@@ -5,7 +5,7 @@ public class BestFirstSearch extends BreadthFirstSearch {
         super();
         this.name = "BestFirstSearch";
     }
-
+ 
     /**
      * @param domain - the problem we need to solve
      * @return  solution - path of postions from start to end
