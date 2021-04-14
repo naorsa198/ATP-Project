@@ -15,7 +15,7 @@ class BestFirstSearchTest {
     @Test
     void solve() {
         Solution s = bfs.solve(new SearchableMaze(testMyMaze));
-        assertNotEquals(0,s.Size());
+        assertNotEquals(0,s.size());
         assertNotEquals( null,s);
         Maze testMyMaze2= test.generate(0,0);
         assertEquals( null,testMyMaze2);

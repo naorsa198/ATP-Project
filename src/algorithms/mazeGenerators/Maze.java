@@ -103,7 +103,7 @@ public class Maze {
     }
 
     public void setCell(int row, int col, int val) {
-        maze[row][col] = val;
+        maze[row][col] =val;
     }
 
     public int getVal(int row,int col){
@@ -147,6 +147,19 @@ public class Maze {
         }
 
     }
+
+
+
+    private int extractVariables(byte[] arr, int from, int end) {
+        int value;
+        for(value = 0; from != end; ++from) {
+            value += arr[from] & 255;
+        }
+
+        return value;
+    }
+
+
 }
 
 

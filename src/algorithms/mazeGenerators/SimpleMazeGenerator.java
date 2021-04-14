@@ -1,8 +1,4 @@
 package algorithms.mazeGenerators;
-import algorithms.search.AState;
-
-import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class SimpleMazeGenerator extends AMazeGenerator {
 

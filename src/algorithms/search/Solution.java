@@ -28,7 +28,7 @@ public class Solution {
     /**
      * @return How many states in the solution
      */
-    public int Size(){
+    public int size(){
         return this.pathSolution.size();
     }
 

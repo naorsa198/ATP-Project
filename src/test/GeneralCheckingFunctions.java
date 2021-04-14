@@ -9,7 +9,7 @@ public class GeneralCheckingFunctions {
 
 
     public static String getGithubLink(){
-        String githubLink = "https://github.com/naorsa198/ATP-Project"; return githubLink; }
+        String githubLink = "https://github.com/naorsa198/ATP-Project-PartA"; return githubLink; }
 }
 
 
