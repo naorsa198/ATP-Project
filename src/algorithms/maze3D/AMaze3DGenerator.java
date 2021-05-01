@@ -6,14 +6,11 @@ public abstract class AMaze3DGenerator implements IMaze3DGenerator {
     public Maze3D maze;
 
     @Override
-    public Maze3D generate(int depth, int row, int column) {
-        return null;
-    }
+    public abstract Maze3D generate(int depth, int row, int column);
 
     @Override
     public long measureAlgorithmTimeMillis(int depth, int row, int column) {
         long start = System.currentTimeMillis();
-        //TODO CHANGE HEERE THE LEGEASIZE
         if (depth <2 || row <2 || column <2) {
             return 0;
         }
@@ -31,7 +28,7 @@ public abstract class AMaze3DGenerator implements IMaze3DGenerator {
             return false;
         if (column >= maze.getMazeCol() || column < 0)
             return false;
-        if (maze.map[depth][row][column] != 1)
+        if(maze.getVal(depth,row,column) !=1)
             return false;
         return true;
     }
