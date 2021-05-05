@@ -140,10 +140,9 @@ public class Maze implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(startRow, endRow, startCol, endCol);
-        result = 31 * result + Arrays.hashCode(maze);
-        return result;
+        return Arrays.hashCode(this.toByteArray());
     }
+
 
     /**
      * print the maze
