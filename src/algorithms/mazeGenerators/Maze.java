@@ -1,6 +1,10 @@
 package algorithms.mazeGenerators;
 
-public class Maze {
+import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Objects;
+
+public class Maze implements Serializable {
     protected int[][] maze;
     protected int startRow;
     protected int endRow;
@@ -115,6 +119,32 @@ public class Maze {
         Print();
     }
 
+
+    @Override
+    public String toString() {
+        return "Maze{" +
+                ", startRow=" + startRow +
+                ", endRow=" + endRow +
+                ", startCol=" + startCol +
+                ", endCol=" + endCol +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Maze maze1 = (Maze) o;
+        return startRow == maze1.startRow && endRow == maze1.endRow && startCol == maze1.startCol && endCol == maze1.endCol && Arrays.equals(maze, maze1.maze);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(startRow, endRow, startCol, endCol);
+        result = 31 * result + Arrays.hashCode(maze);
+        return result;
+    }
+
     /**
      * print the maze
      */
@@ -158,6 +188,114 @@ public class Maze {
 
         return value;
     }
+
+    /**
+     * function to convert the maze to byte array
+     * 0 - 0
+     * 1 - 1
+     * 2 - start
+     * 3 - end
+     * 4 - new line zero
+     * 5 - new line one
+     * 6 - new line start
+     * 7 - new line end
+     * @return a byte array according to those settings ^
+     */
+
+    public byte[] toByteArray() {
+        int rows = getMazeRows();
+        int cols = getMazeCols();
+        byte[] array= new byte[rows*cols];
+        int k=0;
+        //insert start and end point
+        this.maze[getStartRow()][getStartCol()]=2;
+        this.maze[getEndRow()][getEndCol()]=3;
+
+        for (int i=0; i<rows; i++) {
+            for (int j=0; j<cols; j++, k++) {
+                if (j==cols-1){
+                    if (this.maze[i][j]==1)
+                        array[k]=5;
+                    else if(this.maze[i][j]==0)
+                        array[k]=4;
+                    else if (this.maze[i][j]==2)
+                        array[k]=6;
+                    else
+                        array[k]=7;
+
+                }
+                else{ //regular case
+                    array[k]= (byte) this.maze[i][j];
+
+                }
+            }
+        }
+        //return the maze to original
+        this.maze[getStartRow()][getStartCol()]=0;
+        this.maze[getEndRow()][getEndCol()]=0;
+
+        return array;
+
+    }
+
+
+
+
+    /**
+     * function to convert the byte array to Maze
+     * 0 - 0
+     * 1 - 1
+     * 2 - start
+     * 3 - end
+     * 4 - new line zero
+     * 5 - new line one
+     * 6 - new line start
+     * 7 - new line end
+     * @return a byte array according to those settings ^
+     */
+    public Maze(byte[] array) {
+        int cols = 0;
+        int rows = 0;
+        int size = array.length;
+        // find number of rows
+        for (int i = 0; i < size; i++) {
+            if (array[i] == 4 || array[i] == 5 || array[i] == 6 || array[i] == 7) {
+                rows = rows + 1;
+            }
+        }
+        //find number of cols;
+        for (int i = 0; i < size; i++) {
+            if (array[i] == 4 || array[i] == 5 || array[i] == 6 || array[i] == 7) {
+                cols = i + 1;
+                break;
+            }
+        }
+
+        this.maze = new int[rows][cols];
+
+        int k = 0;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++, k++) {
+                if (array[k] == 4)
+                    maze[i][j] = 0;
+
+                else if (array[k] == 5)
+                    maze[i][j] = 1;
+
+                else if (array[k] == 6 || array[k] == 2) {
+                    maze[i][j] = 0;
+                    this.startRow = i;
+                    this.startCol = j;
+                } else if (array[k] == 7 || array[k] == 3) {
+                    maze[i][j] = 0;
+                    this.endCol = j;
+                    this.endRow = i;
+                }
+                else maze[i][j]=array[k];
+            }
+        }
+    }
+
 
 
 }

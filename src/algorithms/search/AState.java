@@ -1,7 +1,8 @@
 package algorithms.search;
+import java.io.Serializable;
 import java.util.Comparator;
 
-public abstract class AState {
+public abstract class AState implements Serializable {
     protected int cost;
     protected AState stateBefor;
 

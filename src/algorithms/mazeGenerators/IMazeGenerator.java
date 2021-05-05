@@ -7,7 +7,7 @@ public interface IMazeGenerator {
      * @param col - amount of colums in the maze
      * @return an initialized maze
      */
-    public Maze generate(int row, int col);
+    public abstract Maze generate(int row, int col);
 
     /**
      * @param row - amount of rows in the maze
