@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/ATP-Project-PartA.iml" filepath="$PROJECT_DIR$/ATP-Project-PartA.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/ATP-Project-PartB.iml" filepath="$PROJECT_DIR$/ATP-Project-PartB.iml" />
+>>>>>>> start_configuration
     </modules>
   </component>
 </project>

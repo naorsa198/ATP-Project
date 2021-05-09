@@ -1,8 +1,9 @@
 package algorithms.search;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Solution {
+public class Solution implements Serializable {
     // list of all states from start to goal
     private ArrayList<AState>pathSolution;
 

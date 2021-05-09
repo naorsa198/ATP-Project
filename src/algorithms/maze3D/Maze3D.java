@@ -106,6 +106,8 @@ public class Maze3D {
     }
 
 
+
+
     public void print(){
         System.out.println("{");
         for(int depth = 0; depth < map.length; depth++){
