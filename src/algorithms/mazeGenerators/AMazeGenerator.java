@@ -6,9 +6,7 @@ public abstract class AMazeGenerator implements IMazeGenerator{
     public Maze maze;
 
     @Override
-    public Maze generate(int row, int col) {
-        return null;
-    }
+    public  abstract  Maze generate(int row, int col);
 
     @Override
     public long measureAlgorithmTimeMillis(int row, int col) {
