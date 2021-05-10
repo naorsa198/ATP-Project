@@ -13,23 +13,21 @@ public class Client  implements IClientStrategy {
     private InetAddress serverIP;
     private int serverPort;
     private IClientStrategy strategy;
-    private Maze maze;
 
-    public Client(InetAddress serverIP, int serverPort, IClientStrategy strategy,Maze maze) {
+    public Client(InetAddress serverIP, int serverPort, IClientStrategy strategy ) {
         this.serverIP = serverIP;
         this.serverPort = serverPort;
         this.strategy = strategy;
-        this.maze=maze;
     }
 
     @Override
-    public void clientStrategy(InputStream inFromServer, OutputStream outToServer,Maze maze) {
+    public void clientStrategy(InputStream inFromServer, OutputStream outToServer ) {
     }
 
     public void communicateWithServer() {
         try (Socket serverSocket = new Socket(serverIP, serverPort)) {
        //        System.out.println("connected to server - IP = " + serverIP + ", Port = " + serverPort);
-            strategy.clientStrategy(serverSocket.getInputStream(), serverSocket.getOutputStream(),maze);
+            strategy.clientStrategy(serverSocket.getInputStream(), serverSocket.getOutputStream());
             serverSocket.close();
         } catch (IOException e) {
             e.printStackTrace();

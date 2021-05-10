@@ -1,15 +1,16 @@
 package IO;
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class SimpleDecompressorInputStream extends InputStream{
+public class SimpleDecompressorInputStream extends InputStream {
 
     private InputStream in;
-    private Integer rows, cols, startRow, startCol, endRow, endCol;
+    private Integer rows, cols , startRow , startCol, endRow , endCol;
+
 
 
     public SimpleDecompressorInputStream(InputStream in) {
@@ -22,22 +23,89 @@ public class SimpleDecompressorInputStream extends InputStream{
         endCol = 0;
     }
 
-
     @Override
     public int read(){
         return -1;
     }
+    private byte[] Decompress(byte[] d, int start) {
 
 
+
+        int startFrom = start;
+
+        //run on maze
+        byte[] result = new byte[rows * cols];
+        int index=0;
+        int k= startFrom;
+        try {
+            for (; k < d.length-1; k++) {
+                byte worksOn = d[k];
+                byte[] tmp = ConvertToBinaryArray(worksOn, 8);
+                for (int l = 0; l < 8; l++) {
+                    result[index] = tmp[l];
+                    index++;
+                }
+            }
+        }
+        catch (ArrayIndexOutOfBoundsException e) {
+            //do nothing
+            System.out.println("I am out of bounds");
+
+        }
+
+        /**
+         * last convertion
+         */
+        try {
+            byte dk = d[k];
+            int mod = result.length % 8;
+            if (mod == 0)
+                mod = 8;
+            byte[] tmp = ConvertToBinaryArray(dk, mod);
+            for (int l = 0; l < mod; l++) {
+                result[index] = tmp[l];
+                index++;
+            }
+        }
+        catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("x");
+        }
+
+        //update properties on maze- new lines
+        for (int j=cols-1; j<result.length; j= j+ cols){
+            if (result[j]==0)
+                result[j]=4;
+            else result[j]=5;
+        }
+
+        //update start point
+        int index_start = startRow*cols + startCol;
+        if (result[index_start]==4)
+            result[index_start]=6;
+        else result[index_start]=2;
+
+        //update end point
+        int index_end = endRow*cols + endCol;
+        if (result[index_end]==4)
+            result[index_end]=7;
+        else result[index_end]=3;
+
+        return result;
+    }
+
+    /**
+     *
+     * @param b - compressed maze (with at least 12 cells of properties)
+     * @return
+     */
+
+
+    @Override
     public int read(byte[] b) {
         byte[] x = new byte[0];
         try {
 
-//            int size2 = super.read(b);
-//            System.out.println(size2);
-//            byte[] to_send = new  byte[size2];
 
-            //  byte[] to_send = in.readAllBytes();
             List<Byte> list_of_begin = new ArrayList<Byte>();
 
             while (in.available() > 0)
@@ -45,7 +113,6 @@ public class SimpleDecompressorInputStream extends InputStream{
             byte[] to_send = new byte[list_of_begin.size()];
             for (int i = 0; i < list_of_begin.size(); i++)
                 to_send[i] = list_of_begin.get(i);
-            //System.out.println("reading " + to_send.length);
 
 
             int r = 0;
@@ -66,14 +133,7 @@ public class SimpleDecompressorInputStream extends InputStream{
             i = updateProperty(to_send, 6, i);
             int startPoint = i;
 
-            //tests:
 
-            // int sizing = ((rows*cols)/8 + startPoint);
-
-//            if ((rows*cols)/8 + startPoint !=  to_send.length && (rows*cols)/8 + startPoint !=  to_send.length-1){
-//                System.out.println("FUCK YOU");
-//                System.out.println("from decompressor: "+rows + " , "+ cols);
-//            }
 
             x = Decompress(to_send, startPoint);
 
@@ -99,6 +159,20 @@ public class SimpleDecompressorInputStream extends InputStream{
     }
 
 
+
+
+
+    private byte[] ConvertToBinaryArray(byte tmp, int size) {
+        int intNum = (int) tmp;
+        if (intNum < 0)
+            intNum = intNum + 256;
+        byte[] temp = new byte[size];
+        for (int i = size-1; i >=0; i--) {
+            temp[i] = (byte) (intNum % 2);
+            intNum = intNum / 2;
+        }
+        return temp;
+    }
 
     private int updateProperty(byte[] d, int code, int i) {
 
@@ -157,24 +231,5 @@ public class SimpleDecompressorInputStream extends InputStream{
         return i;
     }
 
-    private byte[] Decompress(byte[] d, int start) {
 
-        byte[] tosend = new byte[rows * cols];
-
-        while (start < d.length) {
-            int i = 0;
-            while (i < d[start]) {
-                if (start % 2 == 0)
-                    tosend[start] = 0;
-                else tosend[start] = 1;
-                i++;
-            }
-            start += 1;
-        }
-        return tosend;
-    }
-
-
-
- }
-
+}

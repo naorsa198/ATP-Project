@@ -8,5 +8,5 @@ import java.io.OutputStream;
 
 public interface IClientStrategy {
 
-    void clientStrategy(InputStream inFromServer, OutputStream outToServer, Maze maze);
+    void clientStrategy(InputStream inFromServer, OutputStream outToServer);
 }

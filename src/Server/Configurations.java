@@ -13,6 +13,7 @@ public  class Configurations {
 
 */
     private static Configurations instance = null;
+    private static  String filename = "resources/config.properties";
 
     //singletone class
     private Configurations() {
@@ -34,7 +35,6 @@ public  class Configurations {
 
 
         try {
-            String filename = "config.properties";
             output = new FileOutputStream(filename);
 
 
@@ -63,7 +63,7 @@ public  class Configurations {
     public Properties getProperties(){
         Properties prop= new Properties();
         InputStream input = null;
-        String filename = "config.properties";
+  //      String filename = "config.properties";
 
 
         try {
