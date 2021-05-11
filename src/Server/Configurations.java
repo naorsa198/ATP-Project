@@ -13,7 +13,7 @@ public  class Configurations {
 
 */
     private static Configurations instance = null;
-    private static  String filename = "resources/config.properties";
+    private static  String filename ="resources/config.properties";
 
     //singletone class
     private Configurations() {
