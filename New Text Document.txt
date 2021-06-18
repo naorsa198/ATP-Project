@@ -1,0 +1,1 @@
+java --module-path "C:\Users\HP\Downloads\openjfx-16_windows-x64_bin-sdk\javafx-sdk-16\lib" --add-modules javafx.controls,javafx.fxml,javafx.media -jar Play.jar

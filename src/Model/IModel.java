@@ -6,7 +6,7 @@ import javafx.scene.input.KeyCode;
 
 import java.io.File;
 
-public interface IModel {6
+public interface IModel {
     void generateMaze (int row, int col);
     void solveMaze();
     void saveMaze(File Filemaze);

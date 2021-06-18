@@ -107,7 +107,7 @@ public class MainPageController implements IView, Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         Image x = null;
         try {
-            x = new Image(new File("resources/images/menuBackground.png").toURI().toURL().toExternalForm());
+            x = new Image(new File("./resources/images/menuBackground.png").toURI().toURL().toExternalForm());
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

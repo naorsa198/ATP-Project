@@ -13,19 +13,19 @@
             <children>
                 <TabPane prefHeight="521.0" prefWidth="531.0" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
-                  <Tab text="Application">
-                     <content>
-                        <Label fx:id="label_application" text="Label" />
-                     </content>
-                  </Tab>
-                        <Tab text="Anael Gorfinkel">
-                     <content>
-                                  <Label fx:id="label_anael" text="Label" />
-                     </content>
-                        </Tab>
-                        <Tab text="Maor Elfassy">
+                        <Tab text="Application">
                             <content>
-                                <Label fx:id="label_maor" text="Label" />
+                                <Label fx:id="label_application" text="Label" />
+                            </content>
+                        </Tab>
+                        <Tab text="Orel Revach">
+                            <content>
+                                <Label fx:id="label_orel" text="Label" />
+                            </content>
+                        </Tab>
+                        <Tab text="Naor Saraf">
+                            <content>
+                                <Label fx:id="label_naor" text="Label" />
                             </content>
                         </Tab>
                     </tabs>

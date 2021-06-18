@@ -109,12 +109,12 @@ public class MyViewModel extends Observable implements Observer{
     public void saveMaze(String name_of_file){
 
         int index = 1;
-        File fileMaze = new File("resources/Save/"+name_of_file);
+        File fileMaze = new File("./resources/Save/"+name_of_file);
 
 
         //checks if the file exist- adding indexes
         while(fileMaze.exists()){
-            fileMaze = new File("resources/Save/"+name_of_file +"(" +index+")");
+            fileMaze = new File("./resources/Save/"+name_of_file +"(" +index+")");
             index++;
         }
         System.out.println(fileMaze.getName());

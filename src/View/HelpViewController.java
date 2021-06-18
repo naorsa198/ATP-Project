@@ -62,7 +62,7 @@ public class HelpViewController implements IView, Initializable {
         String name = text_field_name.getText();
         String email = text_field_email.getText();
         String message = text_field_bug.getText();
-        String our_mail = "maorelfassy@gmail.com";
+        String our_mail = "naorsaraf@gmail.com";
 
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("Sent your bug");

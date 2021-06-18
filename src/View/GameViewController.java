@@ -341,7 +341,7 @@ public class GameViewController extends MyViewController implements Observer, In
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Please choose a maze to load");
-        fileChooser.setInitialDirectory(new File("resources/Save"));
+        fileChooser.setInitialDirectory(new File("./resources/Save"));
         File file = fileChooser.showOpenDialog(new PopupWindow() {
         });
         if (file ==null) {

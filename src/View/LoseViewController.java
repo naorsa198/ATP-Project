@@ -40,7 +40,7 @@ public class LoseViewController extends MyViewController implements Initializabl
     public void initialize(URL location, ResourceBundle resources) {
         showAllScores();
         try {
-            Image x  = new Image(new File("resources/images/loser.png").toURI().toURL().toExternalForm());
+            Image x  = new Image(new File("./resources/images/loser.png").toURI().toURL().toExternalForm());
             loser_cup.setImage(x);
         } catch (MalformedURLException e) {
             e.printStackTrace();

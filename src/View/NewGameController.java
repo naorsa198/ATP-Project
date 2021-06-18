@@ -55,7 +55,7 @@ public class NewGameController implements IView, Observer, Initializable {
 
     private void addAllCharacters() {
         characters.add("Kobe Braynt");
-        characters.add("Sonic");
+        characters.add("Sholi");
         characters.add("Simba");
         characters.add("France");
         characters.add("Super Mario");
@@ -155,7 +155,7 @@ public class NewGameController implements IView, Observer, Initializable {
         char_name_label.setText(name);
         Image x = null;
         try {
-            x = new Image(new File("resources/images/token" + currentIndexCharacter + ".png").toURI().toURL().toExternalForm());
+            x = new Image(new File("./resources/images/token" + currentIndexCharacter + ".png").toURI().toURL().toExternalForm());
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -174,7 +174,7 @@ public class NewGameController implements IView, Observer, Initializable {
         char_name_label.setText(name);
         Image x = null;
         try {
-            x = new Image(new File("resources/images/token" + currentIndexCharacter + ".png").toURI().toURL().toExternalForm());
+            x = new Image(new File("./resources/images/token" + currentIndexCharacter + ".png").toURI().toURL().toExternalForm());
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -186,7 +186,7 @@ public class NewGameController implements IView, Observer, Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         Image x = null;
         try {
-            x = new Image(new File("resources/images/token" + currentIndexCharacter + ".png").toURI().toURL().toExternalForm());
+            x = new Image(new File("./resources/images/token" + currentIndexCharacter + ".png").toURI().toURL().toExternalForm());
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

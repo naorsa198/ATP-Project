@@ -45,7 +45,7 @@ public class WinViewController extends MyViewController implements Initializable
     public static LinkedList<String> getHighScoresFile() {
 
         LinkedList<String> toReturn = null;
-        File file = new File("resources/Scores/table");
+        File file = new File("./resources/Scores/table");
 
         //if there is no file (probably first time run) so I will create one
         try {
@@ -83,7 +83,7 @@ public class WinViewController extends MyViewController implements Initializable
 //TODO: to change algo to bfs
 
         try {
-            Image x  = new Image(new File("resources/images/win.png").toURI().toURL().toExternalForm());
+            Image x  = new Image(new File("./resources/images/win.png").toURI().toURL().toExternalForm());
             win_image.setImage(x);
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -133,7 +133,7 @@ public class WinViewController extends MyViewController implements Initializable
             int index = name.indexOf('$');
             name = name.substring(0,index) + name.substring(index+1);
         }
-        File file = new File("resources/Scores/table");
+        File file = new File("./resources/Scores/table");
         //read the file and send it
         FileInputStream file_input_stream = null;
         try {

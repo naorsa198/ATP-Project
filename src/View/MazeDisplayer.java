@@ -107,28 +107,28 @@ public class MazeDisplayer extends Canvas {
 
                 try {
                     if (indexOfCharacter == 7)
-                        wall = new Image(new FileInputStream("resources/images/wall" + 4 + ".png"));
+                        wall = new Image(new FileInputStream("./resources/images/wall" + 4 + ".png"));
                     else
-                        wall = new Image(new FileInputStream("resources/images/wall" + indexOfCharacter + ".png"));
-                    token = new Image(new FileInputStream("resources/images/token" + indexOfCharacter + ".png"));
+                        wall = new Image(new FileInputStream("./resources/images/wall" + indexOfCharacter + ".png"));
+                    token = new Image(new FileInputStream("./resources/images/token" + indexOfCharacter + ".png"));
                     if (indexOfCharacter == 9) {
-                        path = new Image(new FileInputStream("resources/images/path" + 2 + ".png"));
+                        path = new Image(new FileInputStream("./resources/images/path" + 2 + ".png"));
                     } else if (indexOfCharacter == 3) {
-                        path = new Image(new FileInputStream("resources/images/path" + 7 + ".png"));
+                        path = new Image(new FileInputStream("./resources/images/path" + 7 + ".png"));
                     } else
-                        path = new Image(new FileInputStream("resources/images/path" + indexOfCharacter + ".png"));
+                        path = new Image(new FileInputStream("./resources/images/path" + indexOfCharacter + ".png"));
                     if (indexOfCharacter == 6)
-                        endCell = new Image(new FileInputStream("resources/images/end" + 5 + ".png"));
+                        endCell = new Image(new FileInputStream("./resources/images/end" + 5 + ".png"));
                     else
-                        endCell = new Image(new FileInputStream("resources/images/end" + indexOfCharacter + ".png"));
+                        endCell = new Image(new FileInputStream("./resources/images/end" + indexOfCharacter + ".png"));
                     if (indexOfCharacter == 6) {
-                        startCell = new Image(new FileInputStream("resources/images/start" + 5 + ".png"));
+                        startCell = new Image(new FileInputStream("./resources/images/start" + 5 + ".png"));
                     } else if (indexOfCharacter == 7 || indexOfCharacter == 8 || indexOfCharacter == 4) {
-                        startCell = new Image(new FileInputStream("resources/images/start" + 3 + ".png"));
+                        startCell = new Image(new FileInputStream("./resources/images/start" + 3 + ".png"));
                     } else if (indexOfCharacter == 1) {
-                        startCell = new Image(new FileInputStream("resources/images/start" + 2 + ".png"));
+                        startCell = new Image(new FileInputStream("./resources/images/start" + 2 + ".png"));
                     } else
-                        startCell = new Image(new FileInputStream("resources/images/start" + indexOfCharacter + ".png"));
+                        startCell = new Image(new FileInputStream("./resources/images/start" + indexOfCharacter + ".png"));
 
 
                     GraphicsContext gc = getGraphicsContext2D();
@@ -198,9 +198,9 @@ public class MazeDisplayer extends Canvas {
             ArrayList<AState> solution_array = solution.getSolutionPath();
             int size = solution_array.size();
             if (indexOfCharacter == 6)
-                solutionPath = new Image(new FileInputStream("resources/images/solutionPath" + 5 + ".png"));
+                solutionPath = new Image(new FileInputStream("./resources/images/solutionPath" + 5 + ".png"));
             else
-                solutionPath = new Image(new FileInputStream("resources/images/solutionPath" + indexOfCharacter + ".png"));
+                solutionPath = new Image(new FileInputStream("./resources/images/solutionPath" + indexOfCharacter + ".png"));
             GraphicsContext gc = getGraphicsContext2D();
 
             double canvasHeight = getHeight();
