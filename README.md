@@ -2,6 +2,6 @@
 Maze game by implementing search algorithms using Java and GUI using JavaFX 
 accoridng to SOLID principles
 
-![Screenshot](screenshot1.png)
-![Screenshot](screenshot2.png)
-![Screenshot](screenshot3.png)
+![](Screenshot1.png)
+![](Screenshot2.png)
+![](Screenshot3.png)
